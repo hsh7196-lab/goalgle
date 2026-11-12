@@ -1,0 +1,206 @@
+/* =========================================================
+   Goalgle Football Life Simulation - Premium Sports Dashboard
+   ========================================================= */
+
+:root {
+    --bg-dark: #0b1120;
+    --card-bg: rgba(18, 26, 47, 0.85);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --primary: #10b981;
+    --primary-glow: rgba(16, 185, 129, 0.25);
+    --gold: #f59e0b;
+    --gold-glow: rgba(245, 158, 11, 0.3);
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --pitch-green: #15803d;
+    --pitch-dark: #166534;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    user-select: none;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Pretendard', 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image: 
+        radial-gradient(circle at 10% 20%, rgba(16, 185, 129, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(59, 130, 246, 0.08) 0%, transparent 40%);
+}
+
+/* Glass Card */
+.glass-panel {
+    background: var(--card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.gold-glow {
+    box-shadow: 0 0 25px var(--gold-glow);
+    border-color: rgba(245, 158, 11, 0.4);
+}
+
+.emerald-glow {
+    box-shadow: 0 0 25px var(--primary-glow);
+    border-color: rgba(16, 185, 129, 0.4);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4);
+}
+
+/* Animations */
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(1); opacity: 0.9; }
+    50% { transform: scale(1.03); opacity: 1; filter: drop-shadow(0 0 15px #f59e0b); }
+}
+
+.animate-trophy {
+    animation: pulseGlow 3s infinite ease-in-out;
+}
+
+@keyframes goalFlash {
+    0% { background-color: rgba(245, 158, 11, 0.8); }
+    100% { background-color: transparent; }
+}
+
+.goal-flash {
+    animation: goalFlash 1.2s ease-out;
+}
+
+/* Tactical Football Pitch Board */
+.football-pitch {
+    background: repeating-linear-gradient(
+        0deg,
+        var(--pitch-green),
+        var(--pitch-green) 40px,
+        var(--pitch-dark) 40px,
+        var(--pitch-dark) 80px
+    );
+    border: 2px solid rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    min-height: 440px;
+}
+
+.pitch-center-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100px;
+    height: 100px;
+    border: 2px solid rgba(255, 255, 255, 0.35);
+    border-radius: 50%;
+}
+
+.pitch-center-line {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.35);
+}
+
+.pitch-box-top {
+    position: absolute;
+    top: 0;
+    left: 25%;
+    width: 50%;
+    height: 70px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.35);
+    border-left: 2px solid rgba(255, 255, 255, 0.35);
+    border-right: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.pitch-box-bottom {
+    position: absolute;
+    bottom: 0;
+    left: 25%;
+    width: 50%;
+    height: 70px;
+    border-top: 2px solid rgba(255, 255, 255, 0.35);
+    border-left: 2px solid rgba(255, 255, 255, 0.35);
+    border-right: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+/* Pitch Player Pin */
+.player-pin {
+    width: 36px;
+    height: 36px;
+    background: #0f172a;
+    border: 2px solid #38bdf8;
+    color: #fff;
+    font-size: 11px;
+    font-weight: bold;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+.player-pin:hover {
+    transform: scale(1.2);
+    border-color: #f59e0b;
+}
+
+/* Radar Canvas Container */
+.radar-container {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+    margin: 0 auto;
+}
+
+/* Ballon d'Or Golden Badge Card */
+.ballon-badge {
+    background: linear-gradient(135deg, #78350f 0%, #b45309 30%, #f59e0b 70%, #fef3c7 100%);
+    border: 2px solid #fef08a;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+    color: #1e1b4b;
+    font-weight: 800;
+}
+
+/* Button micro-interactions */
+.btn-action {
+    transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-action:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+.btn-action:active {
+    transform: translateY(1px);
+}
+
+/* Modal Backdrop */
+.modal-overlay {
+    background: rgba(4, 9, 20, 0.85);
+    backdrop-filter: blur(8px);
+    transition: opacity 0.25s ease;
+}
